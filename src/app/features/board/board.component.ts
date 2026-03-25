@@ -42,12 +42,13 @@ export class BoardComponent {
 
   onCreatedTask(data: { title: string; description?: string; columnId: string }) {
     this.showTaskForm.set(false);
-    this.tasks().push(
+    this.tasks.update((tasks) => [
+      ...tasks,
       createTask({
         title: data.title,
         description: data.description,
         columnId: data.columnId,
       }),
-    );
+    ]);
   }
 }
