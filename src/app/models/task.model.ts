@@ -42,3 +42,9 @@ export const DEFAULT_COLUMNS: Column[] = [
     order: 2,
   },
 ];
+
+export interface TaskData {
+  title: string;
+  description: string;
+  selectedColumnId: string;
+}
