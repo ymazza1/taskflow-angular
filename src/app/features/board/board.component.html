@@ -11,6 +11,10 @@
   </div>
 
   @if (showTaskForm()) {
-    <app-task-form />
+    <app-task-form
+      [columns]="columns"
+      (cancelled)="showTaskForm.set(false)"
+      (createdTask)="onCreatedTask($event)"
+    />
   }
 </div>

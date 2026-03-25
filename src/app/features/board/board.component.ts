@@ -1,11 +1,12 @@
 import { Component, computed, signal } from '@angular/core';
 import { ColumnComponent } from './components/column/column.component';
 import { Task, Column, DEFAULT_COLUMNS, createTask } from '../../models/task.model';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [ColumnComponent],
+  imports: [ColumnComponent, TaskFormComponent],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
@@ -38,4 +39,15 @@ export class BoardComponent {
   });
 
   showTaskForm = signal(false);
+
+  onCreatedTask(data: { title: string; description?: string; columnId: string }) {
+    this.showTaskForm.set(false);
+    this.tasks().push(
+      createTask({
+        title: data.title,
+        description: data.description,
+        columnId: data.columnId,
+      }),
+    );
+  }
 }
