@@ -1,13 +1,13 @@
-<div>
-  <header>
+<div class="column">
+  <header class="column-header">
     <h2>{{ column().title }}</h2>
+    <span class="task-count">{{ tasks().length }}</span>
   </header>
-  <span>{{ tasks().length }}</span>
-  <div>
+  <div class="column-content">
     @for (task of tasks(); track task.id) {
       <app-task-card [task]="task" />
     } @empty {
-      <p>Aucune tache</p>
+      <p class="empty-state">Aucune tâche</p>
     }
   </div>
 </div>

@@ -1,9 +1,12 @@
 <article class="task-card">
-  <h3>{{ task().title }}</h3>
-  <span> créée le {{ task().createdAt }}</span>
+  <header class="card-header">
+    <h3>{{ task().title }}</h3>
+    <button class="btn-close" (click)="deleteTask(task().id)" aria-label="Supprimer">
+      &#x2715;
+    </button>
+  </header>
   @if (task().description) {
-    <p class="description">
-      {{ task().description }}
-    </p>
+    <p class="description">{{ task().description }}</p>
   }
+  <span class="date">créée le {{ task().createdAt }}</span>
 </article>

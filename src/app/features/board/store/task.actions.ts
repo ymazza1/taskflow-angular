@@ -8,5 +8,6 @@ export const TaskActions = createActionGroup({
     'Load Tasks': emptyProps(),
     'Load Task Success': props<{ tasks: Task[] }>(),
     'Add Task': props<{ title: string; description?: string; columnId: string }>(),
+    'Delete Task': props<{ id: string }>(),
   },
 });

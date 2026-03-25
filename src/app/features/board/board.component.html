@@ -1,10 +1,21 @@
-<div>
+<div class="board">
   <header class="board-header">
-    <h1>Taskflow</h1>
-    <button (click)="showTaskForm.set(true)">Nouvelle Tache</button>
+    <div class="header-content">
+      <h1>Taskflow</h1>
+      <span class="task-count">{{ totalTasks() }} tâches</span>
+    </div>
+    <div class="header-actions">
+      <div class="completion-badge">
+        <span>{{ completedPercentage() }}% complété</span>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="completedPercentage()"></div>
+        </div>
+      </div>
+      <button class="btn-primary" (click)="showTaskForm.set(true)">+ Nouvelle tâche</button>
+    </div>
   </header>
+
   <div class="board-columns">
-    <span>Taux de complétion : {{ completedPercentage() }} %</span>
     @for (column of columns; track column.id) {
       <app-column [column]="column" [tasks]="getTasksByColumnId(column.id)()" />
     }

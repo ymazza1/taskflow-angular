@@ -42,4 +42,11 @@ export const taskReducer = createReducer(
       loading: false,
     };
   }),
+
+  on(TaskActions.deleteTask, (state, { id }) => {
+    return {
+      ...state,
+      tasks: state.tasks.filter((task) => task.id !== id),
+    };
+  }),
 );
