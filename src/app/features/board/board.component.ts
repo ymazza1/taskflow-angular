@@ -1,7 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ColumnComponent } from './components/column/column.component';
 import { Task, Column, DEFAULT_COLUMNS, createTask } from '../../models/task.model';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { Store } from '@ngrx/store';
+import { TaskActions } from './store/task.actions';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { selectAllTasks } from './store/task.selectors';
 
 @Component({
   selector: 'app-board',
@@ -10,19 +14,14 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
-export class BoardComponent {
-  tasks = signal<Task[]>([
-    createTask({ title: 'Apprendre les Signals', columnId: 'todo' }),
-    createTask({
-      title: 'Tache test',
-      columnId: 'done',
-      description: 'ma super description',
-    }),
-    createTask({
-      title: 'Tache test 2',
-      columnId: 'done',
-    }),
-  ]);
+export class BoardComponent implements OnInit {
+  private store = inject(Store);
+
+  tasks = toSignal(this.store.select(selectAllTasks), { initialValue: [] });
+
+  ngOnInit(): void {
+    this.store.dispatch(TaskActions.loadTasks());
+  }
 
   columns = DEFAULT_COLUMNS;
 
@@ -42,13 +41,6 @@ export class BoardComponent {
 
   onCreatedTask(data: { title: string; description?: string; columnId: string }) {
     this.showTaskForm.set(false);
-    this.tasks.update((tasks) => [
-      ...tasks,
-      createTask({
-        title: data.title,
-        description: data.description,
-        columnId: data.columnId,
-      }),
-    ]);
+    this.store.dispatch(TaskActions.addTask(data));
   }
 }
