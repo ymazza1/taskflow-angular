@@ -1,0 +1,16 @@
+<div>
+  <header class="board-header">
+    <h1>Taskflow</h1>
+    <button (click)="showTaskForm.set(true)">Nouvelle Tache</button>
+  </header>
+  <div class="board-columns">
+    <span>Taux de complétion : {{ completedPercentage() }} %</span>
+    @for (column of columns; track column.id) {
+      <app-column [column]="column" [tasks]="getTasksByColumnId(column.id)()" />
+    }
+  </div>
+
+  @if (showTaskForm()) {
+    <app-task-form />
+  }
+</div>

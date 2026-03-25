@@ -1,0 +1,9 @@
+<article class="task-card">
+  <h3>{{ task().title }}</h3>
+  <span> créée le {{ task().createdAt }}</span>
+  @if (task().description) {
+    <p class="description">
+      {{ task().description }}
+    </p>
+  }
+</article>
