@@ -1,5 +1,5 @@
 <div class="modal-overlay">
-  <div class="modal">
+  <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true" class="modal">
     <header class="modal-header">
       <h2>Nouvelle tache</h2>
       <button class="btn-close" (click)="onCancel()" aria-label="Fermer">X</button>

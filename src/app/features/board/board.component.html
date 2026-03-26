@@ -1,8 +1,12 @@
 <div class="board">
   <header class="board-header">
     <div class="header-content">
-      <h1>Taskflow</h1>
-      <span class="task-count">{{ totalTasks() }} tâches</span>
+      <h1 i18n="Page title|Title of the board@@boardTitle">Flot de tache</h1>
+      <span class="task-count" i18n>{totalTasks(), plural,
+        =0 {Pas de tache}
+        =1 {Une tache}
+        other {{{totalTasks()}} taches}
+      }</span>
     </div>
     <div class="header-actions">
       <div class="completion-badge">

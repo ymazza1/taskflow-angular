@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { TaskActions } from './store/task.actions';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { selectAllTasks } from './store/task.selectors';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-board',
@@ -17,6 +18,7 @@ import { selectAllTasks } from './store/task.selectors';
 })
 export class BoardComponent implements OnInit {
   private store = inject(Store);
+  private announcer = inject(LiveAnnouncer);
 
   tasks = toSignal(this.store.select(selectAllTasks), { initialValue: [] });
 
@@ -43,5 +45,6 @@ export class BoardComponent implements OnInit {
   onCreatedTask(data: { title: string; description?: string; columnId: string }) {
     this.showTaskForm.set(false);
     this.store.dispatch(TaskActions.addTask(data));
+    this.announcer.announce('La tache a été ajoutée');
   }
 }

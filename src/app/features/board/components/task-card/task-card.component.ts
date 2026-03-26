@@ -4,13 +4,14 @@ import { Store } from '@ngrx/store';
 import { Task } from '../../../../models/task.model';
 import { TaskActions } from '../../store/task.actions';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-card',
   standalone: true,
   templateUrl: './task-card.component.html',
   styleUrl: './task-card.component.scss',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
 })
 export class TaskCardComponent {
   private store = inject(Store);

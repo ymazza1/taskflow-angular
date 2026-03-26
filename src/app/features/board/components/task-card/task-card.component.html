@@ -8,6 +8,7 @@
   @if (task().description) {
     <p class="description">{{ task().description }}</p>
   }
-  <span class="date">créée le {{ task().createdAt }}</span>
+  <span class="date">créée le {{ task().createdAt | date: 'longDate' }}</span>
+
   <button [routerLink]="['/board/task/', task().id]">Voir le détail</button>
 </article>

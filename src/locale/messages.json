@@ -1,0 +1,7 @@
+{
+  "locale": "fr",
+  "translations": {
+    "boardTitle": "Flot de tache",
+    "9150840641491641908": "{VAR_PLURAL, plural, =0 {Pas de tache} =1 {Une tache} other {{INTERPOLATION} taches}}"
+  }
+}

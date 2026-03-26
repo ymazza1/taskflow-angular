@@ -2,11 +2,12 @@ import { Component, input, model, output, signal } from '@angular/core';
 import { Column, Task, TaskData } from '../../../../models/task.model';
 import { FormsModule } from '@angular/forms';
 import { form, required, FormField, max, maxLength } from '@angular/forms/signals';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [FormsModule, FormField],
+  imports: [FormsModule, FormField, A11yModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss',
 })
