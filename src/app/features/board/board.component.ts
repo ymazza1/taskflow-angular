@@ -1,4 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { ColumnComponent } from './components/column/column.component';
 import { Task, Column, DEFAULT_COLUMNS, createTask } from '../../models/task.model';
 import { TaskFormComponent } from './components/task-form/task-form.component';
@@ -10,7 +11,7 @@ import { selectAllTasks } from './store/task.selectors';
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [ColumnComponent, TaskFormComponent],
+  imports: [ColumnComponent, TaskFormComponent, RouterOutlet],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })

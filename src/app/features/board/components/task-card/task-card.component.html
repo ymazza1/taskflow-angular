@@ -9,4 +9,5 @@
     <p class="description">{{ task().description }}</p>
   }
   <span class="date">créée le {{ task().createdAt }}</span>
+  <button [routerLink]="['/board/task/', task().id]">Voir le détail</button>
 </article>

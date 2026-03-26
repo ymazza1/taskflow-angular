@@ -49,4 +49,13 @@ export const taskReducer = createReducer(
       tasks: state.tasks.filter((task) => task.id !== id),
     };
   }),
+
+  on(TaskActions.updateTask, (state, { id, changes }) => {
+    return {
+      ...state,
+      tasks: state.tasks.map((task) => {
+        return task.id === id ? { ...task, ...changes } : task;
+      }),
+    };
+  }),
 );

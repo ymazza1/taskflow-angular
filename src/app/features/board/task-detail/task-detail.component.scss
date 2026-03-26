@@ -1,7 +1,20 @@
 .detail-page {
+  position: fixed;
+  inset: 0;
+  background: #f8fafc;
+  overflow-y: auto;
   padding: 2rem;
-  max-width: 640px;
-  margin: 0 auto;
+  z-index: 100;
+
+  > .task-detail-card {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  > .empty-state {
+    max-width: 640px;
+    margin: 0 auto;
+  }
 }
 
 // ── Header ──────────────────────────────────────────────────────────────────
@@ -10,7 +23,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
 }
 
 .btn-back {

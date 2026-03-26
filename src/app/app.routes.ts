@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { unsavedChangesGuard } from './guards/usaved-changes.guard';
+import { unsavedChangesGuard } from './guards/unsaved-changes.guard';
+import { taskResolver } from './features/board/task.resolver';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,7 @@ export const routes: Routes = [
           import('./features/board/task-detail/task-detail.component').then(
             (m) => m.TaskDetailComponent,
           ),
-        // resolve: { task: taskResolver }, // à implémenter
+        resolve: { task: taskResolver },
         canDeactivate: [unsavedChangesGuard],
       },
     ],
