@@ -1,0 +1,10 @@
+<div>
+  Paramètres
+
+  <select [(ngModel)]="selectedTheme" (ngModelChange)="markAsChanged()">
+    <option>Clair</option>
+    <option>Obscur</option>
+  </select>
+  <button (click)="save()">Sauvegarder</button>
+  <button (click)="goBack()">retour</button>
+</div>
