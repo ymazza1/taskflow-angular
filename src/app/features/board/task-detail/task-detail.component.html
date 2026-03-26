@@ -1,0 +1,36 @@
+<div class="detail-page">
+  <header class="detail-header">
+    <a class="btn-back" routerLink="/board">&#8592; Retour au board</a>
+    <span class="task-id">Tâche #</span>
+  </header>
+
+  <article class="task-detail-card">
+    <div class="card-top">
+      <span class="column-badge"></span>
+      <div class="field">
+        <label class="field-label" for="task-title">Titre</label>
+        <input id="task-title" class="field-input" type="text" />
+      </div>
+    </div>
+
+    <section class="card-section">
+      <div class="field">
+        <label class="field-label" for="task-description">Description</label>
+        <textarea id="task-description" class="field-input field-textarea" rows="4"></textarea>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <time class="date">Créée le </time>
+      <div class="footer-actions">
+        <button class="btn-delete">Supprimer</button>
+        <button class="btn-save">Sauvegarder</button>
+      </div>
+    </footer>
+  </article>
+
+  <div class="empty-state">
+    <p class="empty-message">Aucune tâche chargée.</p>
+    <p class="empty-hint">Le resolver n'est pas encore configuré.</p>
+  </div>
+</div>
